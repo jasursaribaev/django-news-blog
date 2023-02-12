@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--!s1^rqjrn4kf4d^m_=l*&btmoww*a91ssb2l5w*)k8q^e__)a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['devbrave.uz', 'https://www.devbrave.uz']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic'
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'news_project.urls'
@@ -117,17 +119,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+
+#Loyiha qurish uchun deploy vaqti o'chirib qo'yamaiz
+#STATICFILES_DIRS = [BASE_DIR / 'static']
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+#Loyiha qurish uchun deploy vaqti o'chirib qo'yamaiz
+#MEDIA_ROOT = BASE_DIR / 'media/'
+
 STATIC_URL = 'static/'
-#Loyiha qurish uchun
-STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATIC_ROOT = '/home/devbrave/devbrave.uz/django/static'
+STATICFILES_DIRS = '/home/devbrave/devbrave.uz/django/static_files'
+
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_ROOT = '/home/devbrave/devbrave.uz/django/media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
