@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Create | Post
+{% endblock %}
+{%block css_files%}
+    <link rel="stylesheet" href="{% static 'news/contact.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="container">
+        <h2 class="contact__title">Create new post</h2>
+        <div class="contact-form" method="POST">
+             <form class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                 <button class="btn-contact">Create</button>
+             </form>
+        </div>
+    </div>
+{% endblock %}
+

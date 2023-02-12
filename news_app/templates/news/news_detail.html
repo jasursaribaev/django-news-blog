@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    {{new.title}}
+{% endblock %}
+{%block css_files%}
+    <link rel="stylesheet" href="{% static 'news/news_detail.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="container">
+        <div class="blog">
+            <h2 class="blog__title">{{new.title}}</h2>
+            <p class="blog__text">{{new.body}}</p>
+        </div>
+        <br>
+        <a href="{% url 'news-update' new.slug %}">Update</a>
+        <a href="{% url 'news-delete' new.slug %}">Delete</a>
+    </div>
+{% endblock %}

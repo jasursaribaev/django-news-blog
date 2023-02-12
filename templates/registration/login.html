@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Contact | Page
+{% endblock %}
+{%block css_files%}
+    <link rel="stylesheet" href="{% static 'news/contact.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="container">
+        <h2 class="contact__title">Contact</h2>
+        <div class="contact-form" method="POST">
+             <form class="form" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <br>
+                <a href="{% url 'password_reset' %}">Password reset</a>
+                <br>
+                 <button class="btn-contact">Login</button>
+             </form>
+        </div>
+    </div>
+{% endblock %}
+

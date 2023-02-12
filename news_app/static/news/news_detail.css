@@ -1,0 +1,8 @@
+.blog__title {
+    color: tomato;
+    margin-bottom: 22px;
+}
+
+.blog__text {
+    line-height: normal;
+}

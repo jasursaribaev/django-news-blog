@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Post | Update
+{% endblock %}
+{%block css_files%}
+    <link rel="stylesheet" href="{% static 'news/contact.css' %}">
+{%endblock%}
+{% block content %}
+    <div class="container">
+        <h2 class="contact__title">Contact</h2>
+        <div class="contact-form" method="POST">
+            <h2>Siz haqiqatdan shu postni o'chirmoqchimisiz</h2>
+             <form class="form" method="POST">
+                {% csrf_token %}
+                {{news.title}}
+                <button class="btn-contact">Delete</button>
+             </form>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>
+    {%block title%}
+    {%endblock%}
+</title>
+<link rel="stylesheet" href="{% static 'css/reset.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+{%block css_files%}
+{%endblock%}
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a class="logo_link" href="{% url 'home' %}">Blog</a>
+                <ul class="menu-list">
+                    <li class="menu-list__item">
+                        <a class="menu-list__link" href="{% url 'home' %}" >
+                            Home
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a class="menu-list__link">
+                            Blogs
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a class="menu-list__link">
+                            About
+                        </a>
+                    </li>
+                    <li class="menu-list__item">
+                        <a class="menu-list__link" href="{% url 'contact' %}">
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout'%}">Logout</a>
+                    <a href="{% url 'user-profile' %}">{{user.username}}</a>
+                {% else %}
+                    <a class="login" href="{% url 'login' %}">
+                        Login
+                    </a>
+                    <a class="signup" href="{% url 'signup' %}">
+                        Sign up
+                    </a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    {%block content%}
+    {%endblock%}
+
+    {%block js_files%}
+    {%endblock%}
+</body>
+
+</html>
